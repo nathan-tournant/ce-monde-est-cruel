@@ -74,7 +74,7 @@ class ParnassosPlayer extends Player
         $paper = 0;
         $scissors = 0;
         foreach ($pastChoices as $key => $value) {
-            $coef = 1;
+            $coef = 1 * (int)$key/300;
             switch ($value) {
                 case 'rock':
                     $rock += $coef;
@@ -87,5 +87,6 @@ class ParnassosPlayer extends Player
                     $paper += $coef;
             }
         }
+        return max($rock, $paper, $scissors);
     }
 };
