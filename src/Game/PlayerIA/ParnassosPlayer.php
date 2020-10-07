@@ -46,14 +46,10 @@ class ParnassosPlayer extends Player
         }
 
         if ($this->result->getNbRound()%10 >= 8 && $this->result->getLastScoreFor($this->mySide) <= 1){
-            return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
+            return $this->result->getLastChoiceFor($this->mySide);
         }
 
-        return $this->getOpposite(
-            $this->getNextMove(
-                $this->result->getChoicesFor($this->opponentSide)
-            )
-        );
+        return $this->getNextMove($this->result->getChoicesFor($this->opponentSide));
     }
 
     private function getOpposite($choice) {
@@ -87,6 +83,16 @@ class ParnassosPlayer extends Player
                     $paper += $coef;
             }
         }
-        return max($rock, $paper, $scissors);
+        $max = max($rock, $paper, $scissors);
+        switch ($max)
+        {
+            case $rock:
+                return parent::rockChoice();
+            case $scissors:
+                return parent::scissorsChoice();
+            default:
+            case $paper:
+                return parent::paperChoice();
+        }
     }
 };
