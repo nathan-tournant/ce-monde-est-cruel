@@ -47,7 +47,7 @@ class ParnassosPlayer extends Player
         }
 
         // 2/10 rounds, if I loose/equal, answer the thing that beats what I just played
-        if ($this->result->getNbRound()%10 >= 9 && $this->result->getLastScoreFor($this->mySide) <= 1){
+        if ($this->result->getNbRound()%10 >= 8 && $this->result->getLastScoreFor($this->mySide) <= 1){
             return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
@@ -73,6 +73,7 @@ class ParnassosPlayer extends Player
         $paper = 0;
         $scissors = 0;
         foreach ($pastChoices as $key => $value) {
+            //this coef decides the value of recent feedback
             $coef = 1 * (int)$key/2;
             switch ($value) {
                 case parent::rockChoice():
