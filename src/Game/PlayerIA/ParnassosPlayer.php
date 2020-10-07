@@ -41,16 +41,19 @@ class ParnassosPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
+        //echo $this->result->getLastScoreFor($this->mySide), "\n";
 
         if ($this->result->getNbRound() == 0) {
             return parent::paperChoice();
         }
 
-        if ($this->result->getNbRound() >= 1) {
-            return $this->getOpposite($this->result->getLastChoiceFor($this->opponentSide));
+        if ($this->result->getNbRound()%10 > 5 && $this->result->getLastScoreFor($this->mySide) == 0){
+            return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
+        //echo $this->result->getChoicesFor($this->opponentSide), "\n";
 
+        return $this->getOpposite($this->result->getLastChoiceFor($this->opponentSide));
     }
 
     private function getOpposite($choice) {
