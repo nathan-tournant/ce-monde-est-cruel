@@ -45,7 +45,7 @@ class ParnassosPlayer extends Player
             return parent::paperChoice();
         }
 
-        if ($this->result->getNbRound()%10 > 9 && $this->result->getLastScoreFor($this->mySide) == 0){
+        if ($this->result->getNbRound()%10 >= 9 && $this->result->getLastScoreFor($this->mySide) == 0){
             return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
@@ -74,7 +74,7 @@ class ParnassosPlayer extends Player
         $paper = 0;
         $scissors = 0;
         foreach ($pastChoices as $key => $value) {
-            $coef = 1 * $key/250;
+            $coef = 1;
             switch ($value) {
                 case 'rock':
                     $rock += $coef;
