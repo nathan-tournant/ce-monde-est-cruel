@@ -4,3 +4,4 @@ index.html
 vendor
 EntryPoint.php
 src/Game/PlayerIA/OnderonPlayer.php
+src/Game/PlayerIA/SebaddonPlayer.php

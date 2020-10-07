@@ -46,10 +46,10 @@ class ParnassosPlayer extends Player
         }
 
         if ($this->result->getNbRound()%10 >= 8 && $this->result->getLastScoreFor($this->mySide) <= 1){
-            return $this->result->getLastChoiceFor($this->mySide);
+            return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
-        return $this->getNextMove($this->result->getChoicesFor($this->opponentSide));
+        return $this->getOpposite($this->getNextMove($this->result->getChoicesFor($this->opponentSide)));
     }
 
     private function getOpposite($choice) {
