@@ -47,7 +47,7 @@ class ParnassosPlayer extends Player
         }
 
         // 2/10 rounds, if I loose/equal, answer the thing that beats what I just played
-        if ($this->result->getNbRound()%10 >= 8 && $this->result->getLastScoreFor($this->mySide) <= 1){
+        if ($this->result->getNbRound()%10 >= 9 && $this->result->getLastScoreFor($this->mySide) <= 1){
             return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
