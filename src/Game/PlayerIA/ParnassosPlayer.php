@@ -41,7 +41,17 @@ class ParnassosPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-        return parent::paperChoice();
+        $prevShot = $this->result->getLastChoiceFor($this->opponentSide);
 
+        switch ($prevShot)
+        {
+            case parent::scissorsChoice():
+                return parent::rockChoice();
+            case parent::rockChoice():
+                return parent::paperChoice();
+            case parent::paperChoice():
+            default:
+                return parent::scissorsChoice();
+        }
     }
 };
