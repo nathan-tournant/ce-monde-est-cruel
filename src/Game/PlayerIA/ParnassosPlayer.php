@@ -42,10 +42,10 @@ class ParnassosPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
 
         if ($this->result->getNbRound() == 0) {
-            return parent::paperChoice();
+            return parent::rockChoice();
         }
 
-        if ($this->result->getNbRound()%10 >= 9 && $this->result->getLastScoreFor($this->mySide) == 0){
+        if ($this->result->getNbRound()%10 >= 8 && $this->result->getLastScoreFor($this->mySide) <= 1){
             return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
