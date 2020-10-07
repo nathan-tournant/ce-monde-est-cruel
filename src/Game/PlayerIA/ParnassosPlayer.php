@@ -74,7 +74,7 @@ class ParnassosPlayer extends Player
         $paper = 0;
         $scissors = 0;
         foreach ($pastChoices as $key => $value) {
-            $coef = 1 * $key/100;
+            $coef = 1 * $key/250;
             switch ($value) {
                 case 'rock':
                     $rock += $coef;
