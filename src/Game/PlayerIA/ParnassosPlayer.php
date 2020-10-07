@@ -41,14 +41,17 @@ class ParnassosPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
+        // first round, answer paper
         if ($this->result->getNbRound() == 0) {
-            return parent::rockChoice();
+            return parent::paperChoice();
         }
 
+        // 2/10 rounds, if I loose/equal, answer the thing that beats what I just played
         if ($this->result->getNbRound()%10 >= 8 && $this->result->getLastScoreFor($this->mySide) <= 1){
             return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
+        // answer the most probable considering history
         return $this->getOpposite($this->getNextMove($this->result->getChoicesFor($this->opponentSide)));
     }
 
@@ -70,15 +73,15 @@ class ParnassosPlayer extends Player
         $paper = 0;
         $scissors = 0;
         foreach ($pastChoices as $key => $value) {
-            $coef = 1 * (int)$key/300;
+            $coef = 1 * (int)$key/10;
             switch ($value) {
-                case 'rock':
+                case parent::rockChoice():
                     $rock += $coef;
                     break;
-                case 'scissors':
+                case parent::scissorsChoice():
                     $scissors += $coef;
                     break;
-                case 'paper':
+                case parent::paperChoice():
                 default:
                     $paper += $coef;
             }
