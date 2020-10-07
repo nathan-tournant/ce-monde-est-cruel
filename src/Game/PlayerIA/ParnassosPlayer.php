@@ -7,7 +7,7 @@ use Hackathon\Game\Result;
 /**
  * Class ParnassosPlayers
  * @package Hackathon\PlayerIA
- * @author YOUR NAME HERE
+ * @author Nathan Tournant
  */
 class ParnassosPlayer extends Player
 {
@@ -41,8 +41,7 @@ class ParnassosPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-
-        return parent::rockChoice();
+        return parent::paperChoice();
 
     }
 };
