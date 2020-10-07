@@ -45,11 +45,15 @@ class ParnassosPlayer extends Player
             return parent::paperChoice();
         }
 
-        if ($this->result->getNbRound()%10 > 5 && $this->result->getLastScoreFor($this->mySide) == 0){
+        if ($this->result->getNbRound()%10 > 9 && $this->result->getLastScoreFor($this->mySide) == 0){
             return $this->getOpposite($this->result->getLastChoiceFor($this->mySide));
         }
 
-        return $this->getOpposite($this->getNextMove($this->result->getChoicesFor($this->opponentSide)));
+        return $this->getOpposite(
+            $this->getNextMove(
+                $this->result->getChoicesFor($this->opponentSide)
+            )
+        );
     }
 
     private function getOpposite($choice) {
